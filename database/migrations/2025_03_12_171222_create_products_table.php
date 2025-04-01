@@ -10,14 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+{
+    Schema::create('products', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->bigInteger('category_id')->unsigned();
+        $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+        $table->integer('quantity')->default(0);
+        $table->integer('price')->default(0);
+        $table->text('description')->nullable();
+        $table->timestamps();
+    });
+}
 
-        });
-    }
 
     /**
      * Reverse the migrations.

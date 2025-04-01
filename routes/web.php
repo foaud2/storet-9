@@ -28,3 +28,17 @@ Route::patch('categories/update/{id}',[CategoryController::class,'update']);
 Route::get('/', [FrontController::class,'index']
 );
 
+/**
+ * Route::prefix('admin')->group(function(){
+ * });
+ * Route::get('/',[FrontController::class,'index']);
+ * Route::get('/welcome', function () {
+ * return view('welcome');});
+ * Auth::routes();
+ * Routs::get('/home',[App\Http\controllers\HomeController::class,'index])
+ */
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
